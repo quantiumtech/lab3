@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-interface StringChecker { boolean checkString(String s); }
+interface StringChecker { 
+  public boolean checkString(String s);
+}
+
 
 class ListExamples {
 
@@ -9,10 +12,11 @@ class ListExamples {
   // the StringChecker returns true, and not the elements that return false, in
   // the same order they appeared in the input list;
   static List<String> filter(List<String> list, StringChecker sc) {
+    int index = 0;
     List<String> result = new ArrayList<>();
     for(String s: list) {
       if(sc.checkString(s)) {
-        result.add(0, s);
+        result.add(index, s); // always adds at index zero, so it appends to the front instead of the back. Use an incrementing index.
       }
     }
     return result;
