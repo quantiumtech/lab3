@@ -43,13 +43,12 @@ class LinkedList {
             n.next = new Node(value, null);
             return;
         }
-        // Otherwise, loop until the end and add at the end with a null
+        // Otherwise, loop until the end and add at the end with a null // RUNS INFINITELY BECAUSE THE NEW NEXT POINTER IS ALWAYS NULL. INSTEAD, iterate and only add at the very end.
         while(n.next != null) {
             n = n.next;
-            if (n.next == null); { // the fix
-            n.next = new Node(value, null); 
-            }
         }
+            n.next = new Node(value, null);
+        
     }
     /**
      * @return the value of the first element in the list
