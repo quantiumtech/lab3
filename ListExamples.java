@@ -8,15 +8,24 @@ interface StringChecker {
 
 class ListExamples {
 
-  // Returns a new list that has all the elements of the input list for which
-  // the StringChecker returns true, and not the elements that return false, in
-  // the same order they appeared in the input list;
+
+  // static List<String> filter(List<String> list, StringChecker sc) {
+  //   List<String> result = new ArrayList<>();
+  //   for(String s: list) {
+  //     if(sc.checkString(s)) {
+  //       result.add(0, s); // always adds at 0 rather than at a changing index, leading to a prepending behavior.
+  //     }
+  //   }
+  //   return result;
+  // }
+
   static List<String> filter(List<String> list, StringChecker sc) {
     int index = 0;
     List<String> result = new ArrayList<>();
     for(String s: list) {
       if(sc.checkString(s)) {
-        result.add(index, s); // always adds at index zero, so it appends to the front instead of the back. Use an incrementing index.
+        result.add(index, s); // fixed implentation. having an incrementing index will lead to the expected output of a filtered ArrayList in the same order.
+        index++;
       }
     }
     return result;
